@@ -5,7 +5,9 @@ Description: Wordpress plugin that adds ohDear functionality to project
 Version: 1.0
 Author: Jan Vodila & Denys Yefimenko
 */
-
+if ( file_exists( realpath( __FILE__ ) . '/' . 'vendor/autoload.php' ) ) {
+    require realpath( __FILE__ ) . '/' . 'vendor/autoload.php';
+}
 include_once dirname(__FILE__) . '/includes/Handler/oh-dear-health-check-rewrite.php';
 include_once dirname(__FILE__) . '/includes/Controller/oh-dear-health-check-controller.php';
 
