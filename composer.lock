@@ -1,0 +1,83 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "81c23b37a932a31fdb583b0c506257a6",
+    "packages": [
+        {
+            "name": "ohdearapp/health-check-results",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ohdearapp/health-check-results.git",
+                "reference": "f2362688c8880e26f327b7f881b191b7bdf3faee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ohdearapp/health-check-results/zipball/f2362688c8880e26f327b7f881b191b7bdf3faee",
+                "reference": "f2362688c8880e26f327b7f881b191b7bdf3faee",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "pestphp/pest": "^1.20",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "spatie/pest-plugin-snapshots": "^1.1",
+                "spatie/ray": "^1.28"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "OhDear\\HealthCheckResults\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Create application health check results for Oh Dear",
+            "homepage": "https://github.com/ohdearapp/health-check-results",
+            "keywords": [
+                "application",
+                "health",
+                "health-check-results",
+                "monitoring",
+                "ohdear"
+            ],
+            "support": {
+                "issues": "https://github.com/ohdearapp/health-check-results/issues",
+                "source": "https://github.com/ohdearapp/health-check-results/tree/1.0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/ohdearapp",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-04-29T13:13:36+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.6.0"
+}

@@ -1,0 +1,15 @@
+{
+    "name": "devskio/wordpress-ohdear-health-check",
+    "type": "wordpress-plugin",
+    "license": "MIT",
+    "description": "DEVSK WordPress Health Check extension",
+    "homepage": "https://devsk.io",
+    "keywords": [
+        "DEVSK",
+        "WordPress"
+    ],
+    "version": "1.0.0",
+    "require": {
+        "ohdearapp/health-check-results": "^1.0"
+    }
+}

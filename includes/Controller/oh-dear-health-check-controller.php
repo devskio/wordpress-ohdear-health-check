@@ -47,7 +47,7 @@ function oh_dear_check_secret() {
 /**
  * Function to calculate the percentage of used disk space from total space and return a health check result.
  *
- * @return array
+ * @return \OhDear\HealthCheckResults\CheckResult
  */
 function get_used_disk_space() {
     $totalSpace = @disk_total_space('/');
@@ -91,9 +91,9 @@ function get_used_disk_space() {
 /**
  * Function to get the size of the PHP error log and add the health check result.
  *
- * @return array
+ * @return \OhDear\HealthCheckResults\CheckResult
  */
-function check_php_error_log_size(): array {
+function check_php_error_log_size(): \OhDear\HealthCheckResults\CheckResult {
     $errorLogPath = ini_get('error_log');
     $errorLogFilesizeReadable = 0;
 
@@ -129,7 +129,7 @@ function check_php_error_log_size(): array {
 /**
  * Function to get the size of MySQL database and add the health check result.
  *
- * @return array
+ * @return \OhDear\HealthCheckResults\CheckResult
  */
 function get_mysql_size() {
     global $wpdb;
@@ -198,18 +198,21 @@ function get_mysql_size() {
  * Scan a specified folder for commonly forgotten files or folders by developers.
  * TODO: Refactor and use allowed filename patterns instead of disallowed
  *
- * @return array
+ * @return \OhDear\HealthCheckResults\CheckResult
  */
 function scan_document_root_for_forgotten_files() {
     $allowed_files = [
+        '.htaccess',
         'index.php',
         'license.txt',
+        'liesmich.html',
         'readme.html',
+        'robots.txt',
         'wp-activate.php',
         'wp-admin',
         'wp-blog-header.php',
         'wp-comments-post.php',
-        'wp-config-sample.php',
+        'wp-config.php',
         'wp-content',
         'wp-cron.php',
         'wp-includes',
@@ -220,7 +223,7 @@ function scan_document_root_for_forgotten_files() {
         'wp-settings.php',
         'wp-signup.php',
         'wp-trackback.php',
-        'xmlrpc.php'
+        'xmlrpc.php',
     ];
 
     $forgotten_files_list = array();
@@ -262,7 +265,7 @@ function scan_document_root_for_forgotten_files() {
 /**
  * Check if installed WordPress version is the latest.
  *
- * @return array
+ * @return \OhDear\HealthCheckResults\CheckResult
  */
 function get_wordpress_version() {
     include_once(ABSPATH . 'wp-admin/includes/update.php');
@@ -332,7 +335,7 @@ function format_bytes($bytes, $precision = 2) {
  * @param string $notificationMessage
  * @param mixed $shortSummary
  * @param array $meta
- * @return array
+ * @return \OhDear\HealthCheckResults\CheckResult
  */
 function create_health_check_result(
     string $name,
@@ -341,15 +344,15 @@ function create_health_check_result(
     string $notification_message,
     mixed $short_summary,
     array $meta
-): array {
-    return [
-        'name' => $name,
-        'label' => $label,
-        'status' => $status,
-        'notificationMessage' => $notification_message,
-        'shortSummary' => $short_summary,
-        'meta' => $meta
-    ];
+): \OhDear\HealthCheckResults\CheckResult {
+    return new \OhDear\HealthCheckResults\CheckResult(
+        name: $name,
+        label: $label,
+        notificationMessage: $notification_message,
+        shortSummary: $short_summary,
+        status: $status,
+        meta: $meta
+    );
 }
 
 
