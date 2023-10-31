@@ -7,17 +7,17 @@ const STATUS_SKIPPED = 'skipped';
 
 function oh_dear_health_check_template_include($template) {
     if (get_query_var('oh_dear_health_check')) {
-        $checkResults = array();
+        $checkResults = new \OhDear\HealthCheckResults\CheckResults(DateTime::createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s')));
 
         oh_dear_check_secret();
-        $checkResults['disk_space'] = get_used_disk_space();
-        $checkResults['error_log'] = check_php_error_log_size();
-        $checkResults['mysql_size'] = get_mysql_size();
-        $checkResults['forgotten_files'] = scan_document_root_for_forgotten_files();
-        $checkResults['wordpress_version'] = get_wordpress_version();
+        $checkResults->addCheckResult(get_used_disk_space());
+        $checkResults->addCheckResult(check_php_error_log_size());
+        $checkResults->addCheckResult(get_mysql_size());
+        $checkResults->addCheckResult(scan_document_root_for_forgotten_files());
+        $checkResults->addCheckResult(get_wordpress_version());
 
         header('Content-Type: application/json;charset=utf-8');
-        echo json_encode($checkResults);
+        echo $checkResults->toJson();
         exit;
     }
     return $template;
