@@ -21,6 +21,7 @@ The WordPress OhDear Health Check Plugin allows you to monitor the health and pe
 2. Go to Plugins > Add New > Upload Plugin.
 3. Upload the zip file and activate the plugin.
 4. Once installed, go to the plugin settings and provide your Oh Dear API credentials.
+5. Re-save the permalinks to ensure the health check endpoint is registered via [https://yourdomain.com/healthcheck](https://yourdomain.com/healthcheck).
 
 ## Usage
 
